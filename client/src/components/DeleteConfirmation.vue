@@ -3,7 +3,7 @@
         <h3 class="font-bold text-lg">Are you sure you want to delete!!</h3>
         <div class="modal-action">
             <form method="dialog" class="inline-flex justify-end gap-4">
-                <button class="btn btn-error">Delete</button>
+                <button class="btn btn-error" @click="this.deleteProduct">Delete</button>
                 <button class="btn">Cancel</button>
             </form>
         </div>
@@ -11,8 +11,22 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name: "DeleteConfirmation"
+    name: "DeleteConfirmation",
+    props: {
+        productId: ""
+    },
+    methods: {
+        async deleteProduct(){
+           try {
+             const response = await axios.delete(`http://127.0.0.1:8000/api/products/${this.productId}`)
+             console.log(response);
+           } catch (error) {
+            console.log(error);
+           }
+        }
+    }
 }
 </script>
 

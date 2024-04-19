@@ -1,12 +1,12 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import TableView from './components/TableView.vue'
 import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
   <div>
     <NavBar/>
-    <HelloWorld  />
+    <TableView  />
   </div>
 </template>
 

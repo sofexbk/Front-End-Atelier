@@ -3,20 +3,25 @@
         <h3 class="font-bold text-lg">Add a product</h3>
         <label class="input input-bordered flex items-center gap-2">
             Name
-            <input type="text" class="grow" placeholder="Product" required />
+            <input type="text" class="grow" placeholder="Product" v-model="this.product.name" required />
         </label>
         <label class="input input-bordered flex items-center gap-2">
-            Desc
-            <input type="text" class="grow" placeholder="This a product" required />
+            Description
+            <input type="text" class="grow" placeholder="This a product" v-model="this.product.description" required />
         </label>
         <label class="input input-bordered flex items-center gap-2">
             Price
-            <input type="number" class="grow" placeholder="9.99$" required />
+            <input type="number" class="grow" placeholder="9.99$" v-model="this.product.price" required />
         </label>
-        
+
+        <label class="input input-bordered flex items-center gap-2">
+            Quantity
+            <input type="number" class="grow" placeholder="9.99$" v-model="this.product.quantity" required />
+        </label>
+
         <div class="modal-action">
             <form method="dialog" class="inline-flex justify-end gap-4">
-                <button class="btn btn-info ">Add</button>
+                <button class="btn btn-info " @click="this.addProduct">Add</button>
                 <button class="btn">Close</button>
             </form>
         </div>
@@ -24,9 +29,34 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name: "AddProduct"
+    name: "AddProduct",
+
+    data() {
+        return {
+            product: {
+                name: "",
+                description: "",
+                price: 0,
+                quantity: 0
+            }
+        }
+    },
+    methods: {
+        async addProduct() {
+            try {
+                const response = await axios.post("http://127.0.0.1:8000/api/products", this.product)
+                this.product = null
+            } catch (error) {
+
+            }
+        }
+    }
+
 }
+
+
 </script>
 
 <style></style>
