@@ -30,6 +30,9 @@
 
 <script>
 import axios from 'axios'
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 export default {
     name: "AddProduct",
 
@@ -47,7 +50,8 @@ export default {
         async addProduct() {
             try {
                 const response = await axios.post("http://127.0.0.1:8000/api/products", this.product)
-                this.product = null
+                toast.success('The product has been added!')
+                setTimeout(function () { window.location.reload();}, 1000);
             } catch (error) {
 
             }

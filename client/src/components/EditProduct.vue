@@ -38,21 +38,22 @@
 
 <script>
 import axios from 'axios';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 export default {
     name: "EditProduct",
     props: {
         product: Object,
-
     },
     methods: {
         async editProduct(){
             try {
                 const response = await axios.patch(`http://127.0.0.1:8000/api/products/${this.product.id}`,this.product)
-                console.log(response);
+                toast.success("Updated Successfully!")
+                setTimeout(function () { window.location.reload(); }, 1000);
             } catch (error) {
                 console.log(error);
             }
-
         }
     }
 }

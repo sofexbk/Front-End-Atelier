@@ -30,8 +30,9 @@
         </tbody>
       </table>
     </div>
-    <button class="btn btn-success mx-auto" onclick="add_form.showModal()"><font-awesome-icon
-        icon="fa-solid fa-plus w-[20px]" />Add product</button>
+    <button class="btn btn-success mx-auto" onclick="add_form.showModal()">
+      <font-awesome-icon icon="fa-solid fa-plus w-[20px]" />Add product
+    </button>
 
     <dialog id="add_form" class="modal">
       <AddProduct />
@@ -87,8 +88,6 @@ export default {
       this.productId = productid;
       dc_form.showModal();
     },
-
-
   },
 
   mounted() {
