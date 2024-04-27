@@ -15,6 +15,7 @@
           </tr>
         </thead>
         <tbody>
+
           <tr v-for="(product, index ) in this.products" :key="index">
             <th>{{ index + 1 }}</th>
             <td>{{ product.name }}</td>
@@ -27,6 +28,7 @@
               <font-awesome-icon icon="fa-solid fa-pen" class="hover:cursor-pointer" @click="showEditModal(product)" />
             </td>
           </tr>
+          
         </tbody>
       </table>
     </div>
@@ -97,4 +99,3 @@ export default {
 
 }
 </script>
-
